@@ -59,3 +59,16 @@ disqus:
     # Leave shortname blank to disable comments site-wide.
     # Disable comments for any post by adding `comments: false` to that post's YAML Front Matter.
     shortname: cyrics-blog
+# the default template only loads the comments if it is enabled on the yaml frontmatter
+# we want it on by default so we do this, we can still override with comments: false in a frontmatter
+# if we ever want to disable it for a specific page but we will keep it on by default.
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+      type: "posts"
+    values:
+      comments: true
+
+# here is a boilerplate for you when adding google analytics, remove this comment then.
+# google_analytics: UA-sometrackingid
