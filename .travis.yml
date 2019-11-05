@@ -1,6 +1,6 @@
 language: ruby
 ruby:
-- 2.6.5
+- 2.6.5p114
 before_install:
 - gem install bundler
 script:
@@ -9,6 +9,7 @@ deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
+  local_dir: build
   on:
   branch: gh-pages
 after_success:
