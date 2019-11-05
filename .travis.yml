@@ -5,6 +5,9 @@ script:
 deploy:
   provider: rubygems
   api_key: $RUBYGEMS_API_KEY
+  skip_cleanup: true
+  github_token: $TravisCI
+  keep_history: true
   gem: jekyll-dash
   on:
     tags: true
