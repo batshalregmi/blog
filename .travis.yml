@@ -1,25 +1,21 @@
+language: ruby
+ruby:
+- 2.6.5
 before_install:
 - gem install bundler
 script:
 - bundle install
 deploy:
-  provider: rubygems
-  api_key: "$RUBYGEMS_API_KEY"
-  gem: mariobob.github.io
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
   on:
-    tags: true
-    repo: mariobob/mariobob.github.io
+  branch: gh-pages
 after_success:
 - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
 - "./send.sh success $WEBHOOK_URL"
-- wget https://raw.githubusercontent.com/Mariobob/travis-send.sh/master/push.sh
-- chmod +x push.sh
-- "./push.sh"
 after_failure:
 - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
 - chmod +x send.sh
 - "./send.sh failure $WEBHOOK_URL"
-env:
-  global:
-  - secure: O08lTU+A1U6UUxvmCWLhjSfJ3QzIN0DCRVPBuggFLUvOhdN4AsWhPm3EAD+EsKAiIaTDB5w+dma3B6hPBIlA+pMP7Tw5vpjUGxFzcbkOzjUKFBGbJSWVRemdfiEYbNWATTKTck1Zj24bjOtgdpT8i9sNoQvX9+rzWQ9NP5LoyZzjfsTySK1lhm3TMFxo/eqxo5Wq6wYykKylEcR46fpyMqcWjo6fRHBekr7Jgw7nheEsv3Pq1WlmGPSFs7BFpMYJ2iFJJTn0pIs+iY0w3lhF1KkmiIbKf6Qp57SDksdUYW2KD5xE0AFqFBdaBIsEc2DSH7SncdkK18zPgZtEebPoxzhXv0MLHibq1nscw4L4/5eRG8onsz00IDB7fNO3u/b1QD3OQSL7v+f6jZZGbSyhrlKqdxN8fA8JPvWIR9pcHHcH3Tr7FpVM/JYLSml6DWIzV+X+Rz70MjMppu5NBlhik30mP5ZGZ7QU7vZP0SuZtdufYXdaiX7QHMMPOsQH2g0BX8G/Qs8RBNI/a8UVrFElWCVeKBtbC05dSVDqJSkhWcQbIIAtOra7J7huUhPmeqAgfEmRzVGtjqt5BnTbjIXEWK3h+E6hRandivPT6i7SkHmmB5HrgmFIGuqBy84dgR3DRSNqmYG0T7sXLzHZtLyeLkkNyMhbTGo6A8GdJwEhKUI=
