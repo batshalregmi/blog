@@ -5,7 +5,7 @@ script:
 deploy:
   provider: rubygems
   api_key: "$RUBYGEMS_API_KEY"
-  gem: jekyll-dash
+  gem: mariobob.github.io
   on:
     tags: true
     repo: mariobob/mariobob.github.io
