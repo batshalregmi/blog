@@ -4,21 +4,20 @@ script:
 - bundle install
 deploy:
   provider: rubygems
-  api_key: $RUBYGEMS_API_KEY
-  skip_cleanup: true
-  github_token: $TravisCI
-  keep_history: true
+  api_key: "$RUBYGEMS_API_KEY"
   gem: jekyll-dash
   on:
     tags: true
     repo: mariobob/mariobob.github.io
 after_success:
-  - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
-  - chmod +x send.sh
-  - ./send.sh success $WEBHOOK_URL
+- wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
+- chmod +x send.sh
+- "./send.sh success $WEBHOOK_URL"
+- .travis/push.sh
 after_failure:
-  - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
-  - chmod +x send.sh
-  - ./send.sh failure $WEBHOOK_URL
-
-# thanks to FreeTNT for this
+- wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
+- chmod +x send.sh
+- "./send.sh failure $WEBHOOK_URL"
+env:
+  global:
+    secure: LPTUF5ihBOgfWJKyYgHWOeJSAaYU4moD7MV268dGXbCW1rQ6tjzYKTjOuFYPm8C5K/C1dYXTlrXe0qGxXTswCUEpLasiYvpqXXR7EUx0PFlx5oVtG9bc+C+u8zBXaDkOn8H2SxKnmnaEVRkx9NyZjDMmgsxv1VeNCgG3+iKOIEV8M2l4BIILKMocIRaMKTyWqigN0g5+n5hsaxU+2c6sbaeAS20RFc3t8cCgDrpSLvB08uUjL/E4NeVAXcPzHKlcfmRTIyw9w6o/Jm0rDto77GJqrHf7xG9ZtAKYGwa8TKOQ9K+hPix22cPe9Z7+FvYs5Jeg/rx5zcVRKEMuI/IgULTeKYEmgzH2LcWQaszaSsVoAFN/JI79zFWRXbgTSWZ1Jw0v/ou5OKtzh9S2LOQefugcMP/iYkx6yzjyRzZ+j859bRRVYTO+TrGmQdQtLCh+uINmk6JBuKU/WzsDAThsDm0uRT49LsqqscAGzeIHkLRf2kvt61KGG1S54JZvOdkHbg+BENS2lZl1Mu7tVpjprY3RGq++gfdDfHbVBTlnYsOQhii8o5AwpqBuqATTB9jJ57nqRkGgK3xm5liZxEQXz4R2gILu/VE64vO7b/8gch6ZOXra3Vw4EssMq6odv9Jyjdwn8LxzbhYYUxjeDRQr9x9HI6fUEJqKP0geNarzLSY=
