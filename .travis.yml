@@ -9,7 +9,7 @@ deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
-  local_dir: build
+  local_dir: _site
   on:
   branch: gh-pages
 after_success:
