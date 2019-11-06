@@ -1,4 +1,4 @@
-title: CyRIC's Blog
+title: CyRIC's Blog >
 author: mariobob
 email: realsanjay3293@gmail.com
 description: > # this means to ignore newlines until "show_exerpts:"
@@ -36,9 +36,15 @@ dash:
 # Build settings
 theme: jekyll-dash
 
+jekyll_analytics:
+  GoogleAnalytics:
+    id: UA-138959468-2
+    anonymizeIp: false  
+
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
  - jekyll-paginate
  - liquid-md5
  - jekyll/tagging
+ - jekyll-analytics
