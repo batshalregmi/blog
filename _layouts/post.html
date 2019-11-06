@@ -15,6 +15,7 @@ layout: default
   {% if page.description != null %}
   <div class="post-description">{{ page.description }}</div>
   {% endif %}
+  {% include matched-content.html %}
   {{ content }}
 </div>
 
